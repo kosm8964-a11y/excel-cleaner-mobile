@@ -15,11 +15,20 @@
 
         <section class="card" aria-label="上传文件区域">
             <h2>上传文件</h2>
-            <label class="upload-box" for="excel-file">
-                <input id="excel-file" type="file" accept=".xlsx,.xls,.csv">
-                <span>点击选择 Excel 文件</span>
-                <small>仅做界面展示，暂未连接后端处理</small>
-            </label>
+
+            <form method="post" enctype="multipart/form-data" class="upload-form">
+                <label class="upload-box" for="excel-file">
+                    <input id="excel-file" name="excel_file" type="file" accept=".xlsx" required>
+                    <span>点击选择 .xlsx 文件</span>
+                    <small>当前仅支持上传并保存文件，清洗功能下一步实现</small>
+                </label>
+
+                <button class="primary-btn" type="submit">上传文件</button>
+            </form>
+
+            {% if message %}
+            <p class="status-message {{ message_type }}">{{ message }}</p>
+            {% endif %}
         </section>
 
         <section class="card" aria-label="清洗规则">
@@ -44,11 +53,9 @@
             </div>
         </section>
 
-        <button class="primary-btn" type="button">开始清洗</button>
-
         <section class="card result" aria-label="结果预览">
             <h2>结果预览</h2>
-            <p>清洗结果预览将在这里显示</p>
+            <p>上传成功后，后续将在这里显示清洗结果。</p>
         </section>
     </main>
 </body>

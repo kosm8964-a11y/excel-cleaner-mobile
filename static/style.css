@@ -6,6 +6,10 @@
     --line: #dbe1ea;
     --primary: #2f6bff;
     --primary-pressed: #2457d4;
+    --success-bg: #ecfdf3;
+    --success-text: #027a48;
+    --error-bg: #fef3f2;
+    --error-text: #b42318;
 }
 
 * {
@@ -55,6 +59,11 @@ h2 {
     font-size: 18px;
 }
 
+.upload-form {
+    display: grid;
+    gap: 12px;
+}
+
 .upload-box {
     display: block;
     border: 2px dashed #bfd0ff;
@@ -79,6 +88,24 @@ h2 {
 
 .upload-box small {
     color: var(--muted);
+}
+
+.status-message {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.status-message.success {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.status-message.error {
+    background: var(--error-bg);
+    color: var(--error-text);
 }
 
 .checkbox-group {
@@ -107,7 +134,7 @@ h2 {
     color: #fff;
     font-size: 18px;
     font-weight: 700;
-    margin-top: 16px;
+    margin-top: 4px;
     padding: 15px 12px;
     cursor: pointer;
 }

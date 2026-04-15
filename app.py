@@ -1,11 +1,12 @@
 from pathlib import Path
+from uuid import uuid4
 
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = Path("uploads")
+UPLOAD_FOLDER = Path(app.root_path) / "uploads"
 ALLOWED_EXTENSION = ".xlsx"
 
 
@@ -29,7 +30,9 @@ def home():
                 message_type = "error"
             else:
                 UPLOAD_FOLDER.mkdir(exist_ok=True)
-                save_path = UPLOAD_FOLDER / filename
+                safe_stem = secure_filename(Path(filename).stem) or "file"
+                unique_filename = f"{safe_stem}-{uuid4().hex}{ALLOWED_EXTENSION}"
+                save_path = UPLOAD_FOLDER / unique_filename
                 uploaded_file.save(save_path)
                 message = "文件上传成功"
                 message_type = "success"

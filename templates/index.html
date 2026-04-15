@@ -7,14 +7,49 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Excel 清洗工具</h1>
-        <p class="subtitle">手机优先的在线 Excel 清洗小程序</p>
+    <main class="container">
+        <header class="hero">
+            <h1>Excel 清洗工具</h1>
+            <p class="subtitle">上传 Excel 文件后进行基础清洗</p>
+        </header>
 
-        <div class="card">
-            <p>第一版功能开发中。</p>
-            <p>后续将支持上传 Excel、清洗数据、预览结果并下载。</p>
-        </div>
-    </div>
+        <section class="card" aria-label="上传文件区域">
+            <h2>上传文件</h2>
+            <label class="upload-box" for="excel-file">
+                <input id="excel-file" type="file" accept=".xlsx,.xls,.csv">
+                <span>点击选择 Excel 文件</span>
+                <small>仅做界面展示，暂未连接后端处理</small>
+            </label>
+        </section>
+
+        <section class="card" aria-label="清洗规则">
+            <h2>清洗规则</h2>
+            <div class="checkbox-group">
+                <label class="checkbox-item">
+                    <input type="checkbox" name="rules" checked>
+                    <span>删除空白行</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="rules" checked>
+                    <span>删除空白列</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="rules" checked>
+                    <span>去除单元格首尾空格</span>
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="rules" checked>
+                    <span>清理表头空格</span>
+                </label>
+            </div>
+        </section>
+
+        <button class="primary-btn" type="button">开始清洗</button>
+
+        <section class="card result" aria-label="结果预览">
+            <h2>结果预览</h2>
+            <p>清洗结果预览将在这里显示</p>
+        </section>
+    </main>
 </body>
 </html>
